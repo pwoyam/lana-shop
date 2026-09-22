@@ -1,0 +1,26 @@
+services:
+  lana-shop:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: lana-shop
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - DATABASE_URL=file:/app/data/lana.db
+      - NEXTAUTH_SECRET=${NEXTAUTH_SECRET}
+      - NEXTAUTH_URL=${NEXTAUTH_URL}
+      - NEXT_PUBLIC_SITE_URL=${NEXT_PUBLIC_SITE_URL}
+    volumes:
+      # دیتابیس SQLite
+      - ./data:/app/data
+      # تصاویر آپلود شده
+      - ./uploads:/app/public/uploads
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:3000/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
