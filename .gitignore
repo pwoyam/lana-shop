@@ -43,3 +43,11 @@ next-env.d.ts
 /src/generated/prisma
 
 /src/generated/prisma
+
+# دیتابیس لوکال
+prisma/dev.db
+prisma/dev.db-journal
+
+# فایل‌های آپلود شده
+public/uploads/*
+!public/uploads/.gitkeep

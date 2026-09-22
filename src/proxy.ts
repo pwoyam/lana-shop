@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const response = NextResponse.next()
 
   // امنیت هدرها
@@ -10,7 +10,7 @@ export function middleware(request: NextRequest) {
   response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin')
   response.headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=()')
 
-  // کش کردن استاتیک‌ها
+  // کش کردن فایل‌های آپلود
   if (request.nextUrl.pathname.startsWith('/uploads/')) {
     response.headers.set('Cache-Control', 'public, max-age=31536000, immutable')
   }
