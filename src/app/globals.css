@@ -1,26 +1,57 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* پالت قهوه‌ای برند */
+  --color-brand-50:  #FAF7F2;
+  --color-brand-100: #F5EFE6;
+  --color-brand-200: #E8DCCB;
+  --color-brand-300: #D4C0A8;
+  --color-brand-400: #B89B7A;
+  --color-brand-500: #9C7B5A;
+  --color-brand-600: #6B4F3A;
+  --color-brand-700: #4A3628;
+  --color-brand-800: #3E2C1F;
+  --color-brand-900: #2A1D14;
+  --color-brand-950: #1A120B;
+
+  /* فونت */
+  --font-sans: 'Vazirmatn Variable', system-ui, -apple-system, sans-serif;
+
+  --radius-lg: 0.75rem;
+  --radius-md: 0.5rem;
+  --radius-sm: 0.375rem;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  * {
+    border-color: var(--color-brand-200);
+  }
+  body {
+    background-color: #ffffff;
+    color: #1F1F1F;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: #FAF7F2; }
+::-webkit-scrollbar-thumb { background: #6B4F3A; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #4A3628; }
+
+.container {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: 1rem;
+  max-width: 1280px;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
